@@ -16,6 +16,6 @@ const server =app.listen(app.get('port'), ()=>{
 const socketIO = require('socket.io')
 const io = socketIO(server)
 
-io.on('connection', ()=>{
-    console.log('Un usuario se ha conectado')
+io.on('connection', (socket)=>{
+    console.log('Un usuario se ha conectado', socket.id)
 })
