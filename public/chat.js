@@ -15,8 +15,20 @@ button.addEventListener('click',()=>{
     })
 })
 
+//Detectar escritura de mensaje
+message.addEventListener('keypress',()=>{
+    socket.emit('escribiendoChat', username.value)
+})
+
 socket.on('mensajeServidor',(data)=>{
+    actions.innerHTML = ''
     output.innerHTML += `<p>
      ${data.username} : ${data.message} 
      </p>`
+})
+
+socket.on('escribiendoServidor',(data)=>{
+    actions.innerHTML = `<p>
+        ${data} esta escribiendo...
+    </p>`
 })
